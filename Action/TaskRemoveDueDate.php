@@ -65,6 +65,18 @@ class TaskRemoveDueDate extends Base
     }
 
     /**
+     * Check if the event data meet the action condition
+     *
+     * @access public
+     * @param  array   $data   Event data dictionary
+     * @return bool
+     */
+    public function hasRequiredCondition(array $data)
+    {
+        return $data['task']['column_id'] == $this->getParam('column_id');
+    }
+
+    /**
      * Execute the action
      *
      * @access public
@@ -79,17 +91,5 @@ class TaskRemoveDueDate extends Base
                 'date_due' => null,
             ]
         );
-    }
-
-    /**
-     * Check if the event data meet the action condition
-     *
-     * @access public
-     * @param  array   $data   Event data dictionary
-     * @return bool
-     */
-    public function hasRequiredCondition(array $data)
-    {
-        return $data['task']['column_id'] == $this->getParam('column_id');
     }
 }
